@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 jobs:
-  publish:
+  rust-crate:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
