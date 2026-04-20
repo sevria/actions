@@ -2,6 +2,9 @@ name: Deploy to Cloudflare Workers
 
 on:
   workflow_call:
+    environment:
+      type: string
+      required: true
 
 jobs:
   cloudflare-workers:
@@ -28,7 +31,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          CLOUDFLARE_ENV: dev
+          CLOUDFLARE_ENV: ${{ inputs.environment }}
 
       - name: Deploy
-        run: pnpm wrangler deploy --env dev
+        run: pnpm wrangler deploy --env ${{ inputs.environment }}
